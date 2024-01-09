@@ -1,0 +1,19 @@
+# docker-compose.yml
+version: '3.8'
+services:
+  spring-app:
+    image: image-spring-miniproject:tag
+    ports:
+      - "8029:8029"
+    depends_on:
+      - mysql-db
+
+  mysql-db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root-password
+      MYSQL_DATABASE: miniprojectdb
+      MYSQL_USER: miniprojectuser
+      MYSQL_PASSWORD: miniprojectpassword
+    ports:
+      - "3306:3306"
